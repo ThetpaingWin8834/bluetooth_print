@@ -19,9 +19,9 @@ class BluetoothPrint {
       StreamController.broadcast();
 
   BluetoothPrint._() {
-    _channel.setMethodCallHandler((MethodCall call) {
-      _methodStreamController.add(call);
-      return;
+    _channel.setMethodCallHandler((MethodCall call) async{
+    return  _methodStreamController.add(call);
+      
     });
   }
 
@@ -57,7 +57,7 @@ class BluetoothPrint {
   /// Starts a scan for Bluetooth Low Energy devices
   /// Timeout closes the stream after a specified [Duration]
   Stream<BluetoothDevice> scan({
-    Duration timeout,
+   required Duration timeout,
   }) async* {
     if (_isScanning.value == true) {
       throw Exception('Another scan is already in progress.');
@@ -110,7 +110,7 @@ class BluetoothPrint {
   }
 
   Future startScan({
-    Duration timeout,
+   required Duration timeout,
   }) async {
     await scan(timeout: timeout).drain();
     return _scanResults.value;
