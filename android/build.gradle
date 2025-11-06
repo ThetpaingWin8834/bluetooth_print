@@ -35,6 +35,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
+    namespace "com.xingcyun.bluetooth_print"
     compileSdkVersion 28
 
     defaultConfig {
@@ -47,7 +48,6 @@ android {
 }
 
 dependencies {
-    compile files('libs/gprintersdkv2.jar')
     implementation files('libs/gprintersdkv2.jar')
     implementation "androidx.core:core:1.1.0"
     //implementation files("$flutterRoot/bin/cache/artifacts/engine/android-x64/flutter.jar")
