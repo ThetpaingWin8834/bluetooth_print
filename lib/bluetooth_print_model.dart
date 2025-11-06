@@ -6,8 +6,8 @@ part 'bluetooth_print_model.g.dart';
 class BluetoothDevice {
   BluetoothDevice();
 
-  String name;
-  String address;
+  late String name;
+ late String address;
   int type = 0;
   bool connected = false;
 
@@ -19,8 +19,9 @@ class BluetoothDevice {
 @JsonSerializable(includeIfNull: false)
 class LineText {
   LineText(
-      {this.type, //text,barcode,qrcode,image(base64 string)
-      this.content,
+      {
+       required this.type, //text,barcode,qrcode,image(base64 string)
+     required this.content,
       this.size = 0,
       this.align = ALIGN_LEFT,
       this.weight = 0, //0,1
